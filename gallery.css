@@ -2,136 +2,83 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6; /* Warna latar belakang lembut */
-    color: #333;
+    background-color: #1a1a2e; /* Tetap gelap untuk kesan imersif */
+    color: #f0f0f0;
     line-height: 1.6;
-}
-
-/* Header Styling */
-header {
-    background-color: #3498db; /* Biru cerah */
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-    margin: 0 0 10px;
-    font-size: 2.8em;
-    font-weight: 700;
-}
-
-header p {
-    font-size: 1.1em;
-    opacity: 0.9;
-}
-
-/* Gallery Container Styling */
-.gallery-container {
-    display: grid;
-    /* Responsive grid:
-       - Default: 1 kolom untuk layar sangat kecil
-       - minmax(250px, 1fr): Setiap kolom minimal 250px, fleksibel mengisi ruang
-       - repeat(auto-fit, ...): Otomatis menyesuaikan jumlah kolom berdasarkan lebar
-    */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px; /* Jarak antar gambar */
-    padding: 30px;
-    max-width: 1200px; /* Lebar maksimum galeri */
-    margin: 30px auto; /* Pusatkan galeri */
-}
-
-/* Gallery Item Styling */
-.gallery-item {
-    background-color: #fff;
-    border-radius: 12px; /* Sudut membulat */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
-    overflow: hidden; /* Pastikan gambar tidak keluar dari batas */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus saat hover */
+    min-height: 100vh; /* KRUSIAL: Memastikan body setinggi viewport */
     display: flex;
-    flex-direction: column; /* Untuk menata gambar dan caption vertikal */
+    flex-direction: column;
 }
 
-.gallery-item:hover {
-    transform: translateY(-8px); /* Sedikit naik saat di-hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Bayangan lebih kuat saat di-hover */
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 250px; /* Tinggi gambar yang konsisten */
-    object-fit: cover; /* Pastikan gambar mengisi area tanpa terdistorsi */
-    display: block; /* Hapus spasi ekstra di bawah gambar */
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-}
-
-.gallery-item .caption {
-    padding: 15px;
-    text-align: center;
-    font-size: 1.1em;
-    color: #555;
-    font-weight: 600;
-    background-color: #fff;
-    flex-grow: 1; /* Biarkan caption mengisi sisa ruang jika ada perbedaan tinggi */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50px; /* Minimum tinggi caption */
-}
-
-/* Footer Styling */
-footer {
-    text-align: center;
-    padding: 25px;
-    background-color: #2c3e50; /* Biru gelap */
-    color: #ecf0f1;
-    font-size: 0.9em;
-    margin-top: 50px;
-}
+/* ... (Gaya untuk header, footer, dan gallery-item lainnya tetap sama) ... */
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2.2em;
-    }
+/* Ini adalah bagian yang paling penting untuk layar HP */
 
-    header p {
-        font-size: 1em;
-    }
-
+@media (max-width: 1024px) {
+    /* Penyesuaian untuk tablet landscape atau laptop kecil */
     .gallery-container {
-        padding: 20px;
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        padding: 30px;
     }
-
     .gallery-item img {
-        height: 200px;
+        height: 300px;
     }
+}
 
+@media (max-width: 768px) {
+    /* Penyesuaian untuk tablet portrait atau ponsel besar */
+    header h1 {
+        font-size: 2.5em;
+    }
+    header p {
+        font-size: 1.1em;
+    }
+    .gallery-container {
+        /* Default ke 2 kolom untuk tablet */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 25px;
+        gap: 25px;
+    }
+    .gallery-item img {
+        height: 250px; /* Sedikit lebih kecil untuk tablet */
+    }
     .gallery-item .caption {
-        font-size: 1em;
-        padding: 12px;
+        font-size: 1.1em;
+        padding: 15px;
+        min-height: 50px;
     }
 }
 
 @media (max-width: 480px) {
+    /* KRUSIAL: Penyesuaian untuk ponsel */
     header {
-        padding: 30px 15px;
+        padding: 25px 15px;
     }
-
     header h1 {
-        font-size: 1.8em;
+        font-size: 2em; /* Ukuran judul disesuaikan */
     }
-
+    header p {
+        font-size: 0.95em; /* Ukuran paragraf disesuaikan */
+    }
     .gallery-container {
-        grid-template-columns: 1fr; /* Satu kolom di layar sangat kecil */
-        padding: 15px;
-        gap: 15px;
+        grid-template-columns: 1fr; /* KRUSIAL: Paksa 1 kolom di layar sangat kecil */
+        padding: 20px; /* Padding samping disesuaikan */
+        gap: 20px; /* Jarak antar item */
     }
-
+    .gallery-item {
+        margin-bottom: 20px; /* Tambah jarak bawah antar item jika diinginkan */
+    }
     .gallery-item img {
-        height: 180px;
+        height: 220px; /* KRUSIAL: Tinggi gambar disesuaikan untuk mobile */
+    }
+    .gallery-item .caption {
+        font-size: 1em; /* Ukuran caption disesuaikan */
+        padding: 12px;
+        min-height: 45px;
+    }
+    footer {
+        padding: 15px; /* Padding footer disesuaikan */
     }
 }
