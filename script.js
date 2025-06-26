@@ -10,7 +10,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
     if (usernameInput === correctUsername && passwordInput === correctPassword) {
         alert('Login Berhasil! Mengarahkan ke halaman portofolio...');
-        window.location.href = 'portfolio.html'; // Arahkan ke halaman portofolio
+        window.location.href = 'gallery.html'; // Arahkan ke halaman portofolio
     } else {
         alert('Username atau Password salah. Silakan coba lagi.');
         // Opsional: Kosongkan field password setelah percobaan gagal
