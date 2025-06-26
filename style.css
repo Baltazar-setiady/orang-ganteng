@@ -1,0 +1,241 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHw1MHx8c3RhcnJ5JTIwYW5kJTIwZm9yZXN0fGVufDB8fHx8fDE3MjE4NzcxMDR8MA&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    position: relative; /* Needed for pseudo-elements */
+    overflow: hidden; /* Prevent scrollbar from pseudo-elements */
+}
+
+/* Overlay for better readability and color tint */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Darker overlay */
+    z-index: 1;
+}
+
+.login-container {
+    position: relative;
+    z-index: 2; /* Ensure container is above overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    width: 350px;
+    max-width: 90%;
+    position: relative;
+}
+
+.login-box h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Subtle glow for text */
+}
+
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #eee;
+    font-size: 1em;
+}
+
+.input-group input {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 12px 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1.1em;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-group input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.login-button {
+    background-color: #e53935; /* Red color from the image */
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(229, 57, 53, 0.4);
+}
+
+.login-button:hover {
+    background-color: #c62828; /* Darker red on hover */
+    transform: translateY(-2px);
+}
+
+.links {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Pseudo-elements for space-themed decorations */
+.login-box::before,
+.login-box::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.login-box::before {
+    width: 60px;
+    height: 60px;
+    top: -20px;
+    left: -20px;
+    opacity: 0.7;
+    animation: float 8s ease-in-out infinite;
+}
+
+.login-box::after {
+    width: 40px;
+    height: 40px;
+    bottom: -15px;
+    right: -15px;
+    opacity: 0.5;
+    animation: float 6s ease-in-out infinite reverse;
+}
+
+/* Optional: Additional space elements on the body */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before { /* A larger "planet" */
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    left: 5%;
+    transform: rotate(45deg); /* To make it look like a tilted planet */
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+    animation: rotate 20s linear infinite;
+}
+
+body::after { /* A smaller "moon" */
+    width: 80px;
+    height: 80px;
+    bottom: 15%;
+    right: 8%;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+    animation: float 10s ease-in-out infinite;
+}
+
+/* Keyframe animations */
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(10px, -10px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .login-box {
+        padding: 30px 20px;
+        width: 95%; /* Adjust width for smaller screens */
+    }
+
+    .login-box h1 {
+        font-size: 2em;
+    }
+
+    .input-group input {
+        font-size: 1em;
+    }
+
+    .login-button {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+}
+/* Add this to your existing style.css */
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    background: url('https://img.icons8.com/color/100/000000/user-male-circle.png') no-repeat center center; /* Placeholder avatar icon */
+    background-size: cover;
+    border-radius: 50%;
+    margin: -70px auto 20px auto; /* Adjust margin to place it outside and above */
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 3; /* Ensure it's above other elements */
+}
+
+/* Adjust login-box padding-top to make space for avatar */
+.login-box {
+    /* ... existing styles ... */
+    padding-top: 70px; /* Add this or adjust if needed */
+}
